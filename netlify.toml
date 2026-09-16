@@ -7,12 +7,17 @@
   NODE_VERSION = "22"
   NPM_FLAGS = "--no-audit --no-fund"
   PNPM_FLAGS = "--no-frozen-lockfile"
+  # متغيرات البيئة الخاصة بقاعدة البيانات والمفاتيح
+  DATABASE_URL = "postgresql://postgres:IDLEBX1234098fb%40@db.jwlvmsrzvnubscdfswsk.supabase.co:5432/postgres"
+  JWT_SECRET = "madar_app_jwt_secret_key_2026_secured"
+  SUPABASE_URL = "https://jwlvmsrzvnubscdfswsk.supabase.co"
+  SUPABASE_ANON_KEY = "sb_publishable_AdPFZVa6DasTSsaxpwR0Ww_zLrmnUcz"
 
 [functions]
   node_bundler = "esbuild"
   included_files = ["drizzle/**", "shared/**"]
 
-# إصلاح مسارات التوجيه وإزالة التكرار
+# تصحيح مسارات التوجيه للـ API
 [[redirects]]
   from = "/api/trpc/*"
   to = "/.netlify/functions/api/trpc/:splat"
