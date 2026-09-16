@@ -12,21 +12,22 @@
   node_bundler = "esbuild"
   included_files = ["drizzle/**", "shared/**"]
 
+# إصلاح مسارات التوجيه وإزالة التكرار
 [[redirects]]
   from = "/api/trpc/*"
-  to = "/.netlify/functions/api/api/trpc/:splat"
+  to = "/.netlify/functions/api/trpc/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/api/auth/*"
-  to = "/.netlify/functions/api/api/auth/:splat"
+  to = "/.netlify/functions/api/auth/:splat"
   status = 200
   force = true
 
 [[redirects]]
   from = "/api/oauth/*"
-  to = "/.netlify/functions/api/api/oauth/:splat"
+  to = "/.netlify/functions/api/oauth/:splat"
   status = 200
   force = true
 
@@ -38,7 +39,7 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/api/api/:splat"
+  to = "/.netlify/functions/api/:splat"
   status = 200
   force = true
 
