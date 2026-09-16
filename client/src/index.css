@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* MADAR (مدار) — navy / gold / olive, on warm white */
+  --color-background: oklch(0.995 0.003 90);
+  --color-foreground: oklch(0.24 0.03 260);
+  --color-card: oklch(1 0 0);
+  --color-card-foreground: oklch(0.24 0.03 260);
+  --color-popover: oklch(1 0 0);
+  --color-popover-foreground: oklch(0.24 0.03 260);
+  --color-primary: oklch(0.28 0.045 260);      /* كحلي عميق #1E293B */
+  --color-primary-foreground: oklch(0.98 0.01 90);
+  --color-secondary: oklch(0.77 0.12 85);      /* ذهبي هادئ #D4AF37 */
+  --color-secondary-foreground: oklch(0.24 0.03 260);
+  --color-muted: oklch(0.97 0.01 90);          /* رمادي فاتح جداً #F8FAFC */
+  --color-muted-foreground: oklch(0.5 0.02 260);
+  --color-accent: oklch(0.45 0.09 150);        /* أخضر زيتي فاخر #0F5132 */
+  --color-accent-foreground: oklch(0.98 0.01 90);
+  --color-destructive: oklch(0.63 0.21 25);
+  --color-destructive-foreground: oklch(0.98 0.01 90);
+  --color-border: oklch(0.9 0.015 90);
+  --color-input: oklch(0.97 0.01 90);
+  --color-ring: oklch(0.77 0.12 85);
+  --radius: 0.6rem;
+  /* عناوين رئيسية: Cairo — عناوين فرعية: Tajawal — نصوص: Readex Pro — أرقام/إنجليزي: Inter */
+  --font-sans: 'Readex Pro', 'Tajawal', 'Inter', sans-serif;
+  --font-display: 'Cairo', 'Tajawal', sans-serif;
+  --font-subhead: 'Tajawal', 'Cairo', sans-serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    background-color: #FFFFFF;
+    color: #1E293B;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: 0;
+  }
+}
+
+/* ─── مدار (MADAR) Custom Utilities ─── */
+@layer utilities {
+  /* Gold gradient text — used for the one emphasis word per headline, not whole lines */
+  .text-cyber {
+    background: linear-gradient(135deg, #D4AF37 0%, #B8860B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-neon {
+    color: #0F5132;
+  }
+
+  /* Glassmorphism, warmed for a light navy/gold brand */
+  .glass {
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+  }
+
+  .glass-light {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(30, 41, 59, 0.08);
+  }
+
+  .border-cyber {
+    border: 1px solid rgba(212, 175, 55, 0.5);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
+  }
+
+  .border-neon {
+    border: 1px solid rgba(15, 81, 50, 0.4);
+  }
+
+  /* Primary button — deep navy with a gold edge */
+  .btn-cyber {
+    background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+    border: 1px solid rgba(212, 175, 55, 0.6);
+    box-shadow: 0 4px 15px rgba(30, 41, 59, 0.25);
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-cyber:hover {
+    box-shadow: 0 8px 25px rgba(30, 41, 59, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .btn-cyber:active {
+    transform: scale(0.97) translateY(0);
+  }
+
+  /* Secondary button — outlined in olive */
+  .btn-neon {
+    background: transparent;
+    border: 1px solid #0F5132;
+    color: #0F5132;
+    transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-neon:hover {
+    background: rgba(15, 81, 50, 0.06);
+    transform: translateY(-2px);
+  }
+
+  /* Card */
+  .card-cyber {
+    background: #FFFFFF;
+    border: 1px solid rgba(30, 41, 59, 0.08);
+    box-shadow: 0 8px 32px rgba(30, 41, 59, 0.06);
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .card-cyber:hover {
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 16px 48px rgba(30, 41, 59, 0.1);
+    transform: translateY(-4px);
+  }
+
+  /* Subtle geometric backdrop, evoking an eight-point star lattice rather than a circuit grid */
+  .bg-cyber-grid {
+    background-image:
+      linear-gradient(rgba(30, 41, 59, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(30, 41, 59, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Neon glow pulse animation */
+  .pulse-neon {
+    animation: pulseNeon 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseNeon {
+    0%, 100% { box-shadow: 0 0 10px rgba(212, 175, 55, 0.35); }
+    50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+  }
+
+  /* Scanline overlay */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Flip card */
+  .flip-card { perspective: 1000px; }
+  .flip-card-inner {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    position: relative;
+  }
+  .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+  .flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back { transform: rotateY(180deg); }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: #F8FAFC; }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1E293B, #D4AF37);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+}
+
+/* ─── Dashboard dark surface (MADAR control panels) ─── */
+.dashboard-surface {
+  background: #0B1220;
+  color: #F8FAFC;
+}
+
+.card-dashboard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 1rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.card-dashboard:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+/* Dark-mode card override when inside dashboard layout */
+.bg-\[\#0B1220\] .card-cyber,
+[data-dashboard] .card-cyber {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+
+.bg-\[\#0B1220\] .card-cyber:hover,
+[data-dashboard] .card-cyber:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  transform: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.field { @apply rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-white placeholder-slate-500 outline-none focus:border-cyan-400/40; }
